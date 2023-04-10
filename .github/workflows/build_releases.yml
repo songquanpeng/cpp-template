@@ -57,6 +57,6 @@ jobs:
         with:
           files: |
             ${{runner.workspace}}/build/template*
-            ${{runner.workspace}}/build/template.exe
+            ${{runner.workspace}}\build\template.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
