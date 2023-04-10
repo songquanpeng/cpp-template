@@ -1,20 +1,20 @@
-# C Template
-> A template for C projects.
+# C++ Template
+> A template for C++ projects.
 
 
 <p>
-  <a href="https://raw.githubusercontent.com/songquanpeng/c-template/main/LICENSE">
-    <img src="https://img.shields.io/github/license/songquanpeng/c-template?color=brightgreen" alt="license">
+  <a href="https://raw.githubusercontent.com/songquanpeng/cpp-template/main/LICENSE">
+    <img src="https://img.shields.io/github/license/songquanpeng/cpp-template?color=brightgreen" alt="license">
   </a>
-  <a href="https://github.com/songquanpeng/c-template/releases/latest">
-    <img src="https://img.shields.io/github/v/release/songquanpeng/c-template?color=brightgreen&include_prereleases" alt="release">
+  <a href="https://github.com/songquanpeng/cpp-template/releases/latest">
+    <img src="https://img.shields.io/github/v/release/songquanpeng/cpp-template?color=brightgreen&include_prereleases" alt="release">
   </a>
-  <a href="https://github.com/songquanpeng/c-template/releases/latest">
-    <img src="https://img.shields.io/github/downloads/songquanpeng/c-template/total?color=brightgreen&include_prereleases" alt="release">
+  <a href="https://github.com/songquanpeng/cpp-template/releases/latest">
+    <img src="https://img.shields.io/github/downloads/songquanpeng/cpp-template/total?color=brightgreen&include_prereleases" alt="release">
   </a>
 </p>
 
 ## Basic Usages
 ```shell
-./template --username root --password toor 
+./template --i input --o output
 ```
