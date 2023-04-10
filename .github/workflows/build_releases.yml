@@ -46,9 +46,9 @@ jobs:
       - name: Rename
         run: |
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
-            mv ${{github.workspace}}/build/template.exe ${{github.workspace}}/build/template.exe
+            mv ${{runner.workspace}}/build/template.exe ${{runner.workspace}}/build/template.exe
           else
-            mv ${{github.workspace}}/build/template ${{github.workspace}}/build/template-${{ matrix.os }}
+            mv ${{runner.workspace}}/build/template ${{runner.workspace}}/build/template-${{ matrix.os }}
           fi
 
       - name: Upload
