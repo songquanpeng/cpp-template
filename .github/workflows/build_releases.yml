@@ -25,6 +25,7 @@ jobs:
         if: ${{ matrix.os == 'windows-latest' }}
         uses: msys2/setup-msys2@v2
 
+
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
 
@@ -44,6 +45,7 @@ jobs:
         run: cmake --build . --config $BUILD_TYPE
 
       - name: Rename
+        shell: bash
         run: |
           if [ "${{ matrix.os }}" = "windows-latest" ]; then
             mv ${{runner.workspace}}/build/template.exe ${{runner.workspace}}/build/template.exe
