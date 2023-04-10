@@ -22,7 +22,6 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Set up MSYS on Windows
-          if: matrix.os == 'windows-latest'
           uses: msys2/setup-msys2@v2
 
       - name: Create Build Environment
