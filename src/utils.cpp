@@ -20,13 +20,7 @@ std::string get_time() {
 }
 
 void print(const std::string &msg, const std::string &level, const std::string &component = "sys") {
-    if (debug) {
-        std::cout << "[" << get_time() << "][" << level << "][" << component << "]: " << msg << " -- "
-                  << __FILE__ << ":" << __LINE__ << " in " << __FUNCTION__
-                  << std::endl;
-    } else {
-        std::cout << "[" << get_time() << "][" << level << "][" << component << "]: " << msg << std::endl;
-    }
+    std::cout << "[" << get_time() << "][" << level << "][" << component << "]: " << msg << std::endl;
 }
 
 void print_info(const std::string &msg, const std::string &component) {

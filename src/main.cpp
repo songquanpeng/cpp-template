@@ -1,9 +1,19 @@
 #include <unistd.h>
 #include <iostream>
 #include <string>
+#include <getopt.h>
 #include "utils.h"
 
 using namespace std;
+
+static const struct option long_options[] = {
+        {"help",    no_argument,       nullptr, 'h'},
+        {"version", no_argument,       nullptr, 'v'},
+        {"input",   required_argument, nullptr, 'i'},
+        {"output",  optional_argument, nullptr, 'o'},
+        {"debug",   no_argument,       nullptr, 'd'},
+        {nullptr,   no_argument,       nullptr, 0}
+};
 
 void print_version() {
     cout << "Cpp Template v0.0.0" << endl;
@@ -11,47 +21,49 @@ void print_version() {
     cout << "Compiled on " << __DATE__ << " at " << __TIME__ << "." << endl;
 }
 
-void print_usage() {
-    cerr << "Usage: " << endl;
-    cerr << "  -d: debug mode" << endl;
-    cerr << "  -i: input file" << endl;
-    cerr << "  -o: output file" << endl;
+void print_help() {
+    cout << "Usage: cpp-template [options]" << endl;
+    cout << "Options:" << endl;
+    cout << "  -h, --help     display this help and exit" << endl;
+    cout << "  -v, --version  output version information and exit" << endl;
+    cout << "  -d, --debug    enable debug mode" << endl;
+    cout << "  -i, --input    input file" << endl;
+    cout << "  -o, --output   output file" << endl;
 }
 
 int main(int argc, char *argv[]) {
     string input, output;
-    int opt;
-    while ((opt = getopt(argc, argv, "vdi:o:")) != -1) {
+    int opt, opt_idx;
+    while ((opt = getopt_long(argc, argv, "vdi:o:", long_options, &opt_idx)) != -1) {
         switch (opt) {
+            case 'h':
+                print_help();
+                exit(EXIT_SUCCESS);
+                break;
             case 'v':
                 print_version();
-                exit(0);
+                exit(EXIT_SUCCESS);
                 break;
             case 'd':
                 enable_debug_mode();
                 break;
             case 'i':
                 input = optarg;
-                std::cout << "Option i is set with value " << input << std::endl;
                 break;
             case 'o':
                 output = optarg;
-                std::cout << "Option o is set with value " << output << std::endl;
-                break;
-            case '?':
-                std::cout << "unknown option: " << optopt << std::endl;
-                print_usage();
-                exit(1);
                 break;
             default:
-                std::cout << "Unexpected option" << std::endl;
+                print_help();
+                exit(EXIT_FAILURE);
         }
     }
     if (input.empty()) {
         std::cerr << argv[0] << ": missing -i option" << std::endl;
-        print_usage();
-        exit(1);
+        print_help();
+        exit(EXIT_FAILURE);
     }
-    print_info("Hello world!", "main");
+    string info = "Your input file is " + input + ", and your output file is " + output + ".";
+    print_info(info, __FUNCTION__);
     return 0;
 }
