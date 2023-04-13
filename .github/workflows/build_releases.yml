@@ -27,7 +27,11 @@ jobs:
 
       - name: Update Version Info
         run: |
-          sed -i "0,/v0.0.0/ s/v0.0.0/$(git describe --tags)/" ./src/main.cpp
+          if [ "${{ matrix.os }}" = "macos-latest" ]; then
+            sed -i "" "s/v0.0.0/$(git describe --tags)/g" ./src/main.cpp
+          else
+            sed -i "s/v0.0.0/$(git describe --tags)/g" ./src/main.cpp
+          fi
 
       - name: Create Build Environment
         run: cmake -E make_directory ${{runner.workspace}}/build
