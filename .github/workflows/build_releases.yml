@@ -10,10 +10,6 @@ on:
 env:
   BUILD_TYPE: Release
 
-defaults:
-  run:
-    shell: bash
-
 jobs:
   build:
     runs-on: ${{ matrix.os }}
@@ -30,6 +26,7 @@ jobs:
         uses: msys2/setup-msys2@v2
 
       - name: Update Version Info
+        shell: bash
         run: |
           if [ "${{ matrix.os }}" = "macos-latest" ]; then
             sed -i "" "s/v0.0.0/$(git describe --tags)/g" ./src/main.cpp
