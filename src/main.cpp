@@ -63,6 +63,9 @@ int main(int argc, char *argv[]) {
         print_help();
         exit(EXIT_FAILURE);
     }
+    if (output.empty()) {
+        output = input + "_processed";
+    }
     string info = "Your input file is " + input + ", and your output file is " + output + ".";
     print_info(info, __FUNCTION__);
     return 0;
